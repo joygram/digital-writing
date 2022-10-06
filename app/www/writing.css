@@ -1,0 +1,16 @@
+#rmd_ {
+	top: 55px;
+	bottom: 0;
+	left: 0%;
+	right: 50%;
+	padding-right: 10px;
+}
+
+#knit_doc_ {
+	top: 55px;
+	bottom: 0;
+	left: 50%;
+	right: 0%;
+	padding-left: 10px;
+	overflow-y: auto;
+}
