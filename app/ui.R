@@ -3,95 +3,73 @@
 
 markdown_text <- ""
 
-mark_editor <- aceEditor(
-    outputId = "rmd",
-    mode = "rmarkdown",
-    tabSize = 4,
-    autoComplete = "live",
-    autoCompleters = "keyword",
-    useSoftTabs = TRUE,
-    fontSize = 14,
-    debounce = 1000,
-    value = markdown_text
-)
-
-
-mark_editor_2 <- aceEditor(
-    outputId = "rmd02",
-    mode = "rmarkdown",
-    tabSize = 4,
-    autoComplete = "live",
-    autoCompleters = "keyword",
-    useSoftTabs = TRUE,
-    fontSize = 14,
-    debounce = 1000,
-    value = markdown_text
-)
-
-
-mark_preview <- htmlOutput("knit_doc")
-
 title_panel <- titlePanel(
     fluidRow(
         column(
-            6, img(height = 57, width = 57, src = "dw_logo.png"),
-            column(6, "디지털 글쓰기", class = "pull-right")
+            1,
+            align = "center",
+            img(height = 57, width = 57, src = "dw_logo.png"),
+        ),
+        column(
+            6,
+            align = "left",
+            h1("디지털 글쓰기")
         )
     )
 )
 
-sidebar_panel <- sidebarPanel(
-    width = 2,
-    h3("교과목"),
-    selectInput("curriculum",
-        "글쓰기 분야",
-        choices = c("과목을 선택하세요" = "", "확률통계" = "stat", "수학" = "math", "국어" = "korean")
-    )
-)
-
-main_panel <- mainPanel(
-    column(
-        6,
-        mark_preview
-    ),
-    column(
-        6,
-        h2("편집기"),
-        downloadButton("report", "보고서"),
-        # uiOutput("file_content_output")
-        # actionButton("eval", "Update"),
-        mark_editor,
-        mark_editor_2
-    )
-)
-
-header <- div()
 footer <- div(
     class = "footer",
     includeHTML("www/footer.html")
 )
 
+selector <-
+    selectInput("curriculum",
+        "글쓰기 분야를 선택 하세요.",
+        choices = c("분야를 골라주세요." = "", "확률통계" = "stat", "수학" = "math", "국어" = "korean")
+    )
+
+mark_editor <- aceEditor(
+    outputId = "rmd",
+    mode = "markdown",
+    tabSize = 4,
+    autoComplete = "live",
+    autoCompleters = c("keyword", "text"),
+    useSoftTabs = TRUE,
+    fontSize = 14,
+    debounce = 1000,
+    wordWrap = TRUE,
+    autoScrollEditorIntoView = TRUE,
+    showInvisibles = FALSE,
+    height = "600px",
+    theme = "solarized_light",
+    value = markdown_text
+)
+mark_preview <- htmlOutput("knit_doc")
 
 markdown_fluid_row <- fluidRow(
     column(
         6,
-        mark_preview
+        h3("에디터"),
+        hr(),
+        downloadButton("report", "보고서"),
+        mark_editor
     ),
     column(
         6,
-        downloadButton("report", "보고서"),
-        mark_editor
+        h3("미리보기"),
+        hr(),
+        mark_preview
     )
 )
 
 fluid_page <- fluidPage(
+    title = "디지털 글쓰기",
     shinyjs::useShinyjs(),
-    includeCSS("www/writing.css"),
+    #    includeCSS("www/editor.css"),
     title_panel,
-    sidebarLayout(
-        sidebar_panel,
-        main_panel
-    ),
+    selector,
+    markdown_fluid_row,
     footer
 )
 

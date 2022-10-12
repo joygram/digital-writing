@@ -1,5 +1,7 @@
-
-
+---
+output:
+  theme: journal
+---
 <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
 
@@ -99,9 +101,9 @@ $$y(x) = ax^2 + bx +c$$
 
 상기 구문을 적용하면 다음에 나온 표가 작성된다.
 
-|  교과목  |    담당자 |     선수 교과목 |
+|  교과목   |    담당자   |     선수 교과목 |
 |:---------|:-----------|------------------:|
-| 마크다운 | 한국R사용자회 | 쉘, Git, Makefiles |
+| 마크다운  | 한국R사용자회 | 쉘, Git, Makefiles |
 
 
 # 그림

@@ -16,10 +16,10 @@ library(sass)
 ## *. CSS
 ################################################
 
-sass(
-    sass_file(glue::glue("www/quarto.scss")),
-    output = glue::glue("www/quarto.css")
-)
+# sass(
+#     sass_file(glue::glue("www/quarto.scss")),
+#     output = glue::glue("www/quarto.css")
+# )
 
 ################################################
 ## *. RMD

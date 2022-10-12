@@ -15,7 +15,7 @@ previewRmd <- function(rmd) {
     paste0(rmd, "\n\n")
 }
 
-shinyServer(function(input, output, session) {
+server <- shinyServer(function(input, output, session) {
 
     # *. Rmd 파일 선택하여 텍스트 보여주기
     file_contents <- reactive(
@@ -30,7 +30,7 @@ shinyServer(function(input, output, session) {
     observe({
         input$curriculum
         updateAceEditor(session, "rmd",
-            mode = "rmarkdown",
+            mode = "markdown",
             tabSize = 4,
             useSoftTabs = TRUE,
             value = paste(file_contents(), collapse = "\n")
