@@ -11,7 +11,6 @@ library(markdown)
 library(dplyr)
 library(sass)
 library(knitr)
-library(highlight)
 
 
 
