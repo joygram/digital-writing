@@ -41,7 +41,7 @@ mark_editor <- aceEditor(
     wordWrap = TRUE,
     autoScrollEditorIntoView = TRUE,
     showInvisibles = FALSE,
-    height = "600px",
+    height = "800px",
     theme = "solarized_light",
     value = markdown_text
 )

@@ -11,7 +11,6 @@ previewRmd <- function(rmd) {
         rmd <- sub("---\n(.*?)\n---", "", rmd)
         rmd <- sub("\n\n", "", rmd)
     }
-
     paste0(rmd, "\n\n")
 }
 
@@ -37,25 +36,17 @@ server <- shinyServer(function(input, output, session) {
         )
     })
 
-    # output$file_content_output <- renderUI({
-    #   HTML(
-    #     paste(
-    #       c("<pre>", file_contents(), "</pre>"),
-    #       collapse = "<br>"
-    #     )
-    #   )
-    # })
-
 
 
     # *. Rmd 편집기
     output$knit_doc <- renderUI({
-        # input$eval
         HTML(knitr::knit2html(
             text = previewRmd(input$rmd),
-            fragment.only = TRUE, quiet = TRUE
-        )) # nolint
+            fragment.only = TRUE,
+            quiet = TRUE
+        ))
     })
+
 
     # *. PDF 파일 생성
     output$report <- downloadHandler(

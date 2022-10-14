@@ -10,6 +10,11 @@ library(shinyjs)
 library(markdown)
 library(dplyr)
 library(sass)
+library(knitr)
+library(highlight)
+
+
+
 # library(bootstraplib)
 
 ################################################
@@ -24,6 +29,9 @@ library(sass)
 ################################################
 ## *. RMD
 ################################################
+
+# opts_knit$set(use.highlight = TRUE)
+# knit_theme$set("neon")
 
 stat_text <- readLines("www/stat.Rmd")
 math_text <- readLines("www/math.Rmd")

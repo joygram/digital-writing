@@ -1,9 +1,3 @@
----
-output: html_document
-editor_options: 
-  chunk_output_type: console
----
-
 
 # 확률통계
 
@@ -15,7 +9,7 @@ editor_options:
 사칙연산은 기본입니다.
 
 ```{r}
-2*3
+2 * 3
 ```
 
 확률통계의 최고봉 정규분포에서 평균 0, 분산 1 표준정규분포로부터 표본 30개 추출은 기본입니다.
@@ -31,8 +25,8 @@ samples
 
 
 ```{r echo=TRUE}
-hist(samples, prob = TRUE) 
-lines(density(samples), col = "red")  
+hist(samples, prob = TRUE)
+lines(density(samples), col = "red")
 ```
 
 ## 요약통계량
@@ -59,7 +53,7 @@ samples_sd <- sqrt(var(samples))
 samples_mean <- mean(samples)
 
 ## 표본이 각각 +-5% 양쪽 한계를 벗어난 것인지 확인
-inout_test <- samples > (samples_mean + 1.96 * samples_sd) | samples < (samples_mean - 1.96 * samples_sd) 
+inout_test <- samples > (samples_mean + 1.96 * samples_sd) | samples < (samples_mean - 1.96 * samples_sd)
 
 test_output <- table(inout_test)
 test_output
@@ -71,7 +65,8 @@ test_output
 ```{r}
 names(test_output) <- c("정상", "특이점")
 knitr::kable(test_output,
-             col.names = c("구분", "빈도수")) 
+  col.names = c("구분", "빈도수")
+)
 ```
 
 
