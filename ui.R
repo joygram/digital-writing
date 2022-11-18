@@ -26,7 +26,7 @@ footer <- div(
 selector <-
     selectInput("curriculum",
         "글쓰기 분야를 선택 하세요.",
-        choices = c("분야를 골라주세요." = "", "확률통계" = "stat", "수학" = "math", "국어" = "korean")
+        choices = c("분야를 골라주세요." = "","도수분포표 01"="freq_table_01", "도수분포표 02"="freq_table_02","확률통계" = "stat", "수학" = "math", "국어" = "korean")
     )
 
 mark_editor <- aceEditor(
@@ -48,19 +48,20 @@ mark_editor <- aceEditor(
 mark_preview <- htmlOutput("knit_doc")
 
 markdown_fluid_row <- fluidRow(
-    column(
-        6,
-        h3("에디터"),
-        hr(),
-        downloadButton("report", "보고서"),
-        mark_editor
-    ),
-    column(
-        6,
-        h3("미리보기"),
-        hr(),
-        mark_preview
-    )
+  column(
+    6,
+    h3("미리보기"),
+    hr(),
+    mark_preview
+  )
+  ,
+  column(
+      6,
+      h3("에디터"),
+      hr(),
+      downloadButton("report", "보고서"),
+      mark_editor
+  )
 )
 
 fluid_page <- fluidPage(
